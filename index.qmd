@@ -4,6 +4,8 @@ author: Mustafa Gursoy
 subtitle: Spatial Data Science Project
 date: today
 date-format: long
+
+## All of your code displays on the published webpage - you can do "code folding" in your yaml - also consider doing "echo = FALSE" (AV)
 ---
 
 # Introduction
@@ -16,7 +18,13 @@ There are noted findings in the political science literature that rural areas te
 
 In this project, I compare the presidential elections of France-2022 and the USA-2020. I analyze how different the relationship between urban-rural population distribution and left-right voting behavior in France and in the USA. 
 
-I hypothesize that two reasons will effect differences in this relationship: first is the stronger tradition of left-wing politics in France; and the second is the wider spectrum of left-wing ideologies. The longer history of leftism can create a closer political affiliation between the rural population and the left-wing parties. The wider spectrum of political ideologies, on the other hand, can present various opportunities for political parties to establish rapport with the rural populations. This is because in a wider political spectrum, not only the number of parties are higher, but also the substantial issue positions adopted by parties can offer a higher variety in their combinations. In a biparty system, issue positions, such as A, B, C, D, are divided into two, while in a multiparty system the issue positions are not only divided into more sections, but also they are adopted by parties with overlaps such as Party-X can adopt A and B while Party-y can adopt B and D. Since France has a multi-party system, multiple parties can address the interests of the rural voters in different ways, preventing the concentration of vote. 
+#Are there big "spectrum based" ideological differences between the USA and France? For example, is the political spectrum in America different (ie: more right) than France? Are there more political parties? This could actually be beneficial for your project. (AV)
+
+I hypothesize that two reasons will effect differences in this relationship: first is the stronger tradition of left-wing politics in France; and the second is the wider spectrum of left-wing ideologies. The longer history of leftism can create a closer political affiliation between the rural population and the left-wing parties. The wider spectrum of political ideologies, on the other hand, can present various opportunities for political parties to establish rapport with the rural populations. This is because in a wider political spectrum, not only the number of parties are higher, but also the substantial issue positions adopted by parties can offer a higher variety in their combinations. In a biparty system, issue positions, such as A, B, C, D, are divided into two, while in a multiparty system the issue positions are not only divided into more sections, but also they are adopted by parties with overlaps such as Party-X can adopt A and B while Party-y can adopt B and D. Since France has a multi-party system, multiple parties can address the interests of the rural voters in different ways, preventing the concentration of vote.  
+
+#There are some states and cities that do "ranked choice" voting (NYC being one), would this compare well? (AV)
+
+#Are there different definitions of "urban rural"? Will you substitute your own? (AV)
 
 *sidenote: I was not able to clear the initialization lines of the code below, I will deal with it later. 
 
@@ -52,6 +60,7 @@ download.file(
 
 French - Geometric Data for Matching
 *the file was too large, I will upload it later
+#Can you upload it into github, maybe under data folder? This may help? (AV)
 
 
 US presidential elections in 2020*
@@ -63,7 +72,7 @@ dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910%2FDVN%2FVOQCHQ&
 ```r
 data_US_elec <- readr::read_csv("data/countypres_2000-2024.csv")
 ```
-*I haven't accomplish setting a download link for this set of data yet.
+*I haven't accomplish setting a download link for this set of data yet. ##I think you can place this data within the data folder in GitHub rather than accessing it locally. (AV)
 American urban-rural population (last update 2023)
 
  https://
@@ -86,8 +95,8 @@ install.packages("ggplot2")
 install.packages("tigris")
 install.packages("classInt")
 install.packages("scales")
-install.packages("janitor")
-install.packages("stringr")
+install.packages("janitor")  # In your presentation, I'd like to know what this one does! (AV)
+install.packages("stringr")  # In your presentation, I'd like to know what this one does! (AV)
 install.packages("units")
 library(sf)
 library(dplyr)
@@ -153,7 +162,7 @@ counties <- tigris::counties(cb = TRUE, year = 2023) |>
     !statefp %in% c("02", "15"),  
     as.numeric(statefp) <= 56 
   )
-
+## Are there similarly sized geometries to "Counties" in France? (AV)
 
 #  County geometries
 
